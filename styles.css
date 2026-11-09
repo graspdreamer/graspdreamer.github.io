@@ -415,9 +415,9 @@ h1, h2, h3, .wordmark { font-family: var(--sans); font-weight: 600; }
 .style-labels, .finger-labels { display: flex; flex-wrap: wrap; gap: 7px; }
 .style-labels span, .finger-labels span { padding: 5px 8px; border: 1px solid var(--line-strong); border-radius: 6px; color: var(--secondary); font-size: 14px; line-height: 1.4; }
 .record-fingers { margin: 0; font-size: 14px; line-height: 1.5; }
-.record-fingers div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; padding: 4px 0; }
-.record-fingers dt { font-weight: 500; }
-.record-fingers dd { margin: 0; color: var(--secondary); }
+.record-fingers div { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 0 8px; padding: 5px 0; }
+.record-fingers dt { padding: 0; border: 0; color: var(--ink); font-size: 14px; font-weight: 500; line-height: 1.5; }
+.record-fingers dd { margin: 0; color: var(--secondary); font-size: 14px; line-height: 1.5; }
 .description-heading { margin: 0 0 18px; font: 500 18px/1.35 var(--sans); letter-spacing: -.02em; }
 .annotation-examples { margin: 0; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .annotation-example { display: block; min-width: 0; }
