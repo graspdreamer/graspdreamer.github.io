@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta name="description" content="Anonymous supplementary material for GraspDreamer: fine-grained static grasp generation with finger modularization.">
+  <meta name="description" content="Anonymous supplementary material for GraspDreamer: fine-grained grasp generation.">
   <meta name="theme-color" content="#fafaf9">
   <title>Fine Grained Grasp Generation · GraspDreamer</title>
-  <link rel="stylesheet" href="styles.css?v=canopy-close-v1">
-  <script defer src="site.bundle.js?v=opaque-v1"></script>
+  <link rel="stylesheet" href="styles.css?v=review-v1">
+  <script defer src="site.bundle.js?v=review-v1"></script>
 </head>
 <body>
   <a class="skip" href="#examples">Skip to examples</a>
   <div class="masthead">
-    <a class="wordmark" href="#top"><span aria-hidden="true">/</span> GraspDreamer</a>
+    <a class="wordmark" href="#top">GraspDreamer</a>
     <span class="review-badge">Anonymous review</span>
   </div>
   <main>
@@ -26,68 +26,59 @@
     <section id="examples" aria-labelledby="page-title">
       <div class="workspace">
         <div class="prompts">
-          <p class="label section-eyebrow">Language to finger-level control</p>
           <h1 id="page-title">Fine Grained<br>Grasp Generation</h1>
-          <p class="workspace-intro">Shape a grasp with words. Inspect the result from every side.</p>
-          <ol class="flow" aria-label="Generation pipeline"><li>Text</li><li>Finger configuration</li><li>Static grasp</li></ol>
+          <ol class="flow" aria-label="Generation pipeline"><li>Text</li><li>Finger configuration</li><li>Grasp</li></ol>
           <div id="object-picker" class="object-picker" hidden><label for="object">Object</label><select id="object"></select></div>
-          <p class="label instruction-label">Choose a recorded instruction</p><p id="object-name" class="sr-only">Claw hammer</p>
+          <p class="instruction-label">Instructions</p><p id="object-name" class="sr-only">Claw hammer</p>
           <div id="prompt-options" class="prompt-options" role="group" aria-label="Choose a recorded instruction"></div>
           <div class="controls-readout" aria-live="polite">
             <div class="readout-heading"><span>Finger configuration</span><span>0 bent → 9 straight</span></div>
-            <table class="finger-table" id="finger-table"><caption class="sr-only">Planner and measured generated finger bins for the selected instruction</caption><thead><tr><th scope="col"></th><th scope="col">Index</th><th scope="col">Middle</th><th scope="col">Ring</th><th scope="col">Pinky</th><th scope="col">Thumb</th></tr></thead><tbody></tbody></table>
-            <p class="readout-note">Planner: text → bins. Measured: angles on the original generated mesh.</p>
+            <table class="finger-table" id="finger-table"><caption class="sr-only">Planned and measured generated finger bins for the selected instruction</caption><thead><tr><th scope="col"></th><th scope="col">Index</th><th scope="col">Middle</th><th scope="col">Ring</th><th scope="col">Pinky</th><th scope="col">Thumb</th></tr></thead><tbody></tbody></table>
+            <p class="readout-note">Display surfaces are smoothed; measurements use the original mesh.</p>
           </div>
         </div>
         <figure class="viewer-figure">
           <div id="stage" class="stage">
             <img id="poster" src="assets/pair-hammer-a.webp?v=rounded-v1" width="1536" height="1536" alt="A generated hand grasping a hammer.">
-            <canvas id="turntable" tabindex="0" aria-label="Rotate the camera around the static grasp and zoom" aria-describedby="view-guide" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight" hidden></canvas>
+            <canvas id="turntable" tabindex="0" aria-label="Rotate the camera view and zoom" aria-describedby="view-guide" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight" hidden></canvas>
             <span class="view-label" id="view-label">Claw hammer · A</span>
           </div>
           <div id="camera-controls" class="camera-controls" hidden>
-            <div class="camera-label"><label for="view-angle">Camera angle</label><output id="view-angle-value" for="view-angle" aria-live="off">120°</output></div>
-            <input id="view-angle" type="range" min="0" max="23" step="1" value="20" aria-valuetext="120 degrees" aria-describedby="view-guide" disabled>
-            <div class="camera-ticks" aria-hidden="true"><span>−180°</span><span>0°</span><span>165°</span></div>
+            <div class="camera-label"><label for="view-angle">View</label><output class="sr-only" id="view-angle-value" for="view-angle" aria-live="off">120°</output></div>
+            <input id="view-angle" type="range" min="0" max="24" step="any" value="20" aria-valuetext="120 degrees" aria-describedby="view-guide" disabled>
           </div>
-          <figcaption id="view-guide" role="status">Static pose · Drag to rotate the camera · Scroll to zoom</figcaption>
+          <figcaption id="view-guide" role="status">Drag to rotate · Scroll to zoom</figcaption>
         </figure>
       </div>
-      <p class="section-note">Each instruction is paired with its recorded generation, without geometric post-optimization. Hand surfaces are subdivided for visualization; measurements use the original generated meshes. These selected examples may differ in source conditions and random seed. Dragging rotates the camera around a fixed pose.</p>
-      <noscript><p>Enable JavaScript to compare recorded prompts and rotate the rendered views.</p></noscript>
+      <noscript><p>Enable JavaScript to select instructions and rotate the rendered views.</p></noscript>
+    </section>
+    <section id="dataset" class="section" aria-labelledby="dataset-heading">
+      <h2 id="dataset-heading">Dataset</h2>
+      <div class="dataset-layout">
+        <figure class="dataset-record" aria-label="Components of an aligned dataset record">
+          <div class="record-field record-object"><h3>Object point cloud</h3><img src="dataset-object.webp?v=review-v1" width="768" height="768" loading="lazy" alt="The toothpaste reference object's point cloud, rendered as blue points."></div>
+          <div class="record-field"><h3>Language descriptions</h3><div class="style-labels"><span>Detailed</span><span>Conversational</span><span>Brief</span></div></div>
+          <div class="record-field"><h3>Finger-control labels</h3><dl class="record-fingers"><div><dt>Index</dt><dd>Bent</dd></div><div><dt>Middle</dt><dd>Partly bent</dd></div><div><dt>Ring</dt><dd>Mostly straight</dd></div><div><dt>Pinky</dt><dd>Mostly straight</dd></div><div><dt>Thumb MCP</dt><dd>Partly bent</dd></div></dl></div>
+          <div class="record-field record-pose"><h3>Hand pose</h3><img src="assets/reference-toothpaste.webp?v=rounded-v1" width="1536" height="1536" loading="lazy" alt="The reference hand pose aligned with the toothpaste object and its descriptions."></div>
+        </figure>
+        <div class="description-records">
+          <h3 class="description-heading">Reference descriptions</h3>
+          <div id="annotation-examples" class="annotation-examples"></div>
+        </div>
+      </div>
     </section>
     <section id="diversity" class="section" aria-labelledby="diversity-heading">
-      <div class="section-heading"><div><p class="label">21 objects · 42 recorded generations</p><h2 id="diversity-heading">Explore the collection.</h2></div><p>Choose a grasp to inspect above.</p></div>
+      <h2 id="diversity-heading">Objects</h2>
       <div id="gallery" class="gallery" aria-label="Grasp collection"></div>
-      <p class="section-note gallery-hint">Scroll each row to see more objects.</p>
     </section>
     <section id="walkthrough" class="section" aria-labelledby="walkthrough-heading">
-      <div class="section-heading"><div><p class="label">A 24-second walkthrough</p><h2 id="walkthrough-heading">Words in. Grasps out.</h2></div><p>Six recorded prompts, viewed around the hand.</p></div>
-      <video class="walkthrough" controls playsinline preload="none" poster="assets/intro-poster.webp?v=rounded-v1" width="1280" height="720" aria-label="Silent walkthrough of six recorded text-to-grasp examples, with each input instruction and its finger configuration shown on screen"><source src="assets/grasp-intro.mp4?v=rounded-v1" type="video/mp4">Your browser does not support embedded video.</video>
-      <p class="section-note">Each segment shows a static generated pose from changing camera angles. Instructions and planner configurations are displayed on screen. No audio.</p>
+      <h2 id="walkthrough-heading">Video</h2>
+      <video class="walkthrough" controls playsinline preload="none" poster="assets/intro-poster.webp?v=rounded-v1" width="1280" height="720" aria-label="Recorded text-to-grasp examples with their instructions and finger configurations"><source src="assets/grasp-intro.mp4?v=rounded-v1" type="video/mp4">Your browser does not support embedded video.</video>
     </section>
     <section id="method" class="section" aria-labelledby="method-heading">
-      <p class="label">Language → configuration → grasp</p><h2 id="method-heading">Fine control, finger by finger.</h2>
-      <p class="section-copy">A language planner converts an instruction into five discrete finger controls. The grasp generator combines these controls with object geometry to synthesize the whole hand pose. The four fingers use their PIP joint angles; the thumb uses its MCP angle.</p>
-      <figure class="paper-figure"><img src="assets/paper-pipeline.webp" width="2500" height="1065" loading="lazy" alt="GraspDreamer method overview: finger-modularized diffusion, supervised warm-up and geometry-guided post-training, and language-to-configuration mapping."><figcaption>Method overview from the paper. The examples above use a text-only planner and an object-conditioned grasp generator.</figcaption></figure>
-      <details id="language-styles"><summary>Three styles of pose-grounded descriptions</summary>
-        <p>Detailed, conversational, and brief descriptions can express different aspects of a reference pose. These are annotation examples, separate from the recorded forward generations above.</p>
-        <div id="annotation-examples" class="annotation-examples"></div>
-      </details>
-    </section>
-    <section id="evaluation" class="section" aria-labelledby="evaluation-heading">
-      <p class="label">What is compared?</p><h2 id="evaluation-heading">Measure the requested control.</h2>
-      <p class="section-copy"><strong>Finger accuracy</strong> counts requested fingers whose measured generated angles fall inside the requested intervals. <strong>Configuration accuracy</strong> counts grasps that satisfy all requested fingers together. Language compliance is checked against the instruction’s targets, independently of the planner’s predictions.</p>
-      <div class="metric-pair"><div><span class="metric">96.8<span>%</span></span><p>Finger accuracy<br><span>125 requested fingers</span></p></div><div><span class="metric">84.0<span>%</span></span><p>Configuration accuracy<br><span>25 generated grasps</span></p></div></div>
-      <p class="section-note">Direct finger-control pilot reported in the paper, Table 3: five objects × five fixed configurations. These results use explicit configuration inputs and do not measure language-planner accuracy.</p>
-      <details><summary>Angle bins, evaluation scope, and grasp quality</summary>
-        <p>There are ten angle bins. Bin 0 covers [0°, 90°); bins 1–8 cover successive 10° intervals from 90° to 170°; bin 9 covers [170°, 180°]. Larger values mean straighter fingers. The readout above displays the planner’s bins and the independently measured bins of the original generated mesh, before display-only surface subdivision.</p>
-        <p>The control metric compares measured angles with requested intervals. Exact-bin agreement and agreement within one bin answer different questions and should be reported separately. Unconstrained fingers are excluded from the paper’s language-compliance score; all five fingers are scored when all five are specified.</p>
-        <div class="table-scroll"><table class="quality-table"><caption>Five-object pilot, paper Table 2 · 25 grasps per method</caption><thead><tr><th scope="col">Method</th><th scope="col">PV (cm³) ↓</th><th scope="col">PD (cm) ↓</th><th scope="col">Contact (%) ↑</th><th scope="col">Entropy ↑</th><th scope="col">Cluster size ↑</th></tr></thead><tbody><tr><th scope="row">FastGrasp</th><td>1.835</td><td>0.406</td><td>88.0</td><td>2.921</td><td>0.7888</td></tr><tr><th scope="row">GraspDreamer</th><td>3.595</td><td>0.270</td><td>100.0</td><td>2.921</td><td>0.4904</td></tr></tbody></table></div>
-        <p>GraspDreamer receives five fixed finger configurations per object; FastGrasp receives object geometry. Entropy and cluster size are measured across all 25 samples, including variation across objects and configurations. Contact alone does not establish stability. Simulation displacement and matched generation times are unreported in this pilot.</p>
-        <p>P-FID compares generated and matched reference hand distributions using a frozen feature extractor. It measures distributional quality separately from instruction accuracy. A joint ACC–FID plot requires both measurements from the same evaluation setting.</p>
-        <p>The interactive collection is a qualitative selection from a separate recorded run on known objects. Its saved screening checks included stated finger constraints and sampled geometry, with up to 3 mm of sampled penetration allowed. It does not establish force closure or physical stability.</p>
-      </details>
+      <h2 id="method-heading">Method</h2>
+      <p class="section-copy">A language planner maps text to finger configurations. The diffusion model generates grasps from these controls and the object point cloud.</p>
+      <figure class="paper-figure"><img src="assets/paper-pipeline.webp" width="2500" height="1065" loading="lazy" alt="GraspDreamer method: finger-modularized diffusion, supervised warm-up, geometry-guided post-training, and language-to-configuration mapping."></figure>
     </section>
     <footer>GraspDreamer · Anonymous supplementary material</footer>
   </main>

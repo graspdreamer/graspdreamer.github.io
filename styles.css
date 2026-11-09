@@ -366,3 +366,104 @@ footer { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 70px;
   .section-eyebrow { font-size: 9px; }
   .camera-controls { margin-top: 18px; }
 }
+
+/* Review revision: direct labels, readable controls, and a visible data record. */
+h1, h2, h3, .wordmark { font-family: var(--sans); font-weight: 600; }
+.wordmark { font-size: 23px; letter-spacing: -.045em; }
+.review-badge { font-size: 13px; }
+.hero > .hero-wordmark { font: 600 clamp(42px, 12vw, 150px)/1 var(--sans); letter-spacing: -.075em; bottom: 0; }
+.canopy-motion { font-size: 13px; padding: 7px 12px; }
+.workspace h1 { font: 500 clamp(36px, 4.2vw, 56px)/1.04 var(--sans); letter-spacing: -.055em; }
+.workspace .flow { justify-content: start; flex-wrap: wrap; align-items: center; gap: 7px; margin: 22px 0; padding: 12px 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); font-size: 14px; line-height: 1.5; color: var(--ink); }
+.workspace .flow li { font-weight: 500; gap: 0; }
+.workspace .flow li + li::before { margin-right: 7px; color: var(--ink); font-size: 18px; }
+.workspace .object-picker { margin-bottom: 20px; }
+.workspace .object-picker label, .workspace select { font-size: 15px; }
+.instruction-label { margin-bottom: 12px; font-size: 15px; font-weight: 500; color: var(--ink); }
+.prompt-options { gap: 14px; }
+.prompt-choice { border: 1.5px solid #c9c9c2; border-radius: 12px; padding: 15px 16px; background: var(--white); color: var(--ink); }
+.prompt-choice .choice-label { font-size: 15px; font-weight: 600; color: inherit; margin-bottom: 10px; }
+.prompt-choice .choice-label::after { display: none; }
+.prompt-choice .prompt-text { font-size: 16px; line-height: 1.55; }
+.prompt-choice[aria-pressed="true"] { background: #171716; color: #fff; border-color: #171716; box-shadow: none; }
+.prompt-choice[aria-pressed="true"] .choice-label, .prompt-choice[aria-pressed="true"] .prompt-text, .prompt-choice[aria-pressed="true"] strong { color: #fff; }
+.prompt-choice:hover { border-color: var(--ink); }
+.controls-readout { margin-top: 22px; }
+.readout-heading { font-size: 14px; gap: 12px; }
+.finger-table { font-size: 14px; }
+.finger-table thead th { font-size: 12px; color: var(--secondary); }
+.finger-table td { font-size: 17px; }
+.readout-note { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--secondary); }
+.view-label { font-size: 13px; }
+.camera-controls { margin-top: 18px; }
+.camera-label { font-size: 14px; }
+#view-angle { height: 32px; margin-top: 4px; }
+.viewer-figure figcaption { font-size: 14px; line-height: 1.5; color: var(--secondary); }
+.section { margin-top: clamp(62px, 7vw, 96px); }
+.section h2 { margin-bottom: 28px; font: 500 clamp(30px, 3.4vw, 42px)/1.1 var(--sans); letter-spacing: -.045em; }
+.section-copy { font-size: 16px; max-width: 78ch; color: var(--secondary); }
+.gallery-card span { font-size: 14px; }
+.gallery-card b { font-size: 13px; color: var(--secondary); }
+.walkthrough { margin-top: 0; }
+.dataset-layout { display: grid; grid-template-columns: minmax(230px, .7fr) minmax(0, 2.3fr); align-items: start; gap: 28px; }
+.dataset-record { margin: 0; overflow: hidden; border: 1px solid var(--line-strong); border-radius: 16px; background: #fff; }
+.record-field { min-width: 0; padding: 18px; }
+.record-field + .record-field { border-top: 1px solid var(--line); }
+.record-field h3 { margin: 0 0 12px; font: 600 16px/1.35 var(--sans); letter-spacing: -.02em; }
+.record-field img { display: block; width: 100%; height: 154px; object-fit: contain; }
+.record-pose img { height: 180px; }
+.style-labels, .finger-labels { display: flex; flex-wrap: wrap; gap: 7px; }
+.style-labels span, .finger-labels span { padding: 5px 8px; border: 1px solid var(--line-strong); border-radius: 6px; color: var(--secondary); font-size: 14px; line-height: 1.4; }
+.record-fingers { margin: 0; font-size: 14px; line-height: 1.5; }
+.record-fingers div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; padding: 4px 0; }
+.record-fingers dt { font-weight: 500; }
+.record-fingers dd { margin: 0; color: var(--secondary); }
+.description-heading { margin: 0 0 18px; font: 500 18px/1.35 var(--sans); letter-spacing: -.02em; }
+.annotation-examples { margin: 0; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.annotation-example { display: block; min-width: 0; }
+.annotation-example img { width: 100%; max-width: none; height: 180px; border-radius: 12px; object-fit: contain; }
+.annotation-example h3 { margin: 17px 0 0; font: 600 17px/1.35 var(--sans); letter-spacing: -.025em; }
+.annotation-example dl { margin: 20px 0 0; }
+.annotation-example dt { display: inline-block; margin: 0 0 7px; padding: 4px 7px; border: 1px solid var(--line-strong); border-radius: 5px; font-size: 14px; font-weight: 600; color: var(--ink); }
+.annotation-example dd { margin: 0 0 20px; font-size: 15px; line-height: 1.6; color: var(--secondary); }
+footer { font-size: 13px; }
+@media (max-width: 1050px) {
+  .dataset-layout { grid-template-columns: 1fr; gap: 30px; }
+  .dataset-record { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .record-field { padding: 16px; }
+  .record-field + .record-field { border-top: 0; border-left: 1px solid var(--line); }
+  .record-field img, .record-pose img { height: 140px; }
+}
+@media (max-width: 740px) {
+  .hero > .hero-wordmark { bottom: 4px; }
+  .workspace h1 { font-size: 34px; }
+  .workspace .flow { font-size: 13px; gap: 6px; margin: 18px 0; }
+  .workspace .flow li + li::before { margin-right: 6px; }
+  .workspace .object-picker label, .workspace select { font-size: 14px; }
+  .prompt-choice { padding: 13px; }
+  .prompt-choice .prompt-text { font-size: 15px; }
+  .readout-heading { font-size: 13px; }
+  .readout-heading span:last-child { display: inline; }
+  .annotation-examples { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .annotation-example img { height: 145px; }
+  .annotation-example h3 { font-size: 16px; }
+}
+@media (max-width: 620px) {
+  .hero > .hero-wordmark { font-size: 12vw; }
+  .workspace h1 { font-size: clamp(36px, 9.2vw, 50px); }
+  .workspace .flow { font-size: 14px; }
+  .workspace .object-picker label, .workspace select { font-size: 15px; }
+  .prompt-choice .prompt-text { font-size: 16px; }
+  .readout-heading { font-size: 14px; }
+  .finger-table thead th { font-size: 12px; }
+  .dataset-record { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .record-field { border: 0; }
+  .record-field + .record-field { border-left: 0; }
+  .record-field:nth-child(even) { border-left: 1px solid var(--line); }
+  .record-field:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .annotation-examples { grid-template-columns: 1fr; gap: 25px; }
+  .annotation-example { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: 18px; align-items: start; }
+  .annotation-example img { height: 170px; }
+  .annotation-example h3 { margin-top: 0; }
+  .annotation-example dd { font-size: 15px; }
+}

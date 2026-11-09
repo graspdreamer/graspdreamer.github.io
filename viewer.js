@@ -8,7 +8,8 @@ const canvas = document.querySelector('#turntable');
 const poster = document.querySelector('#poster');
 const guide = document.querySelector('#view-guide');
 const promptOptions = document.querySelector('#prompt-options');
-const objects = new Map(graspPairs.map(object => [object.id, object]));
+const visibleObjects = graspPairs.filter(object => !['wine-glass', 'eyeglasses'].includes(object.id));
+const objects = new Map(visibleObjects.map(object => [object.id, object]));
 // The saved arrays use I, M, P, R, T; the table labels use I, M, R, P, T.
 const displayFingerOrder = [0, 1, 3, 2, 4];
 
@@ -98,9 +99,9 @@ function showObject(id, caseIndex = 0) {
   showCase(caseIndex);
 }
 
-// Put familiar contrasting objects first; every object remains available in the picker.
+// Put familiar contrasting objects first in the curated collection.
 const featuredOrder = ['hammer', 'banana', 'mug', 'toothpaste', 'mouse', 'airplane'];
-const orderedObjects = [...graspPairs].sort((a, b) => {
+const orderedObjects = [...visibleObjects].sort((a, b) => {
   const rank = id => featuredOrder.includes(id) ? featuredOrder.indexOf(id) : featuredOrder.length + graspPairs.findIndex(object => object.id === id);
   return rank(a.id) - rank(b.id);
 });
@@ -121,7 +122,7 @@ for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
       card.setAttribute('aria-label', `${object.name}, instruction ${index === 0 ? 'A' : 'B'}`);
       card.setAttribute('aria-pressed', 'false');
       const img = document.createElement('img');
-      img.src = renderUrl(example.poster);
+    img.src = renderUrl(example.poster);
       img.alt = '';
       img.width = 166;
       img.height = 166;
